@@ -40,27 +40,31 @@ const EDUCATION = [
   },
   {
     id: 'edu-2',
-    role: 'Senior Secondary (RBSE -- XII)',
+    role: 'Senior Secondary (RBSE -- Class XII)',
     company: 'Ornate EduSystem',
     jobType: 'Didwana, Rajasthan',
     duration: { start: 'Apr 2021', end: 'Apr 2022' },
     points: [
-      'Completed Senior Secondary education (Class 12th RBSE board) with focus on Science and Mathematics.',
-      'Developed strong analytical, mathematical, and logical problem-solving fundamentals.'
+      'Completed Senior Secondary Education (Class 12th RBSE Board) with specialization in Physics, Chemistry, and Mathematics (PCM).',
+      'Developed strong analytical, calculus, coordinate geometry, and logical problem-solving fundamentals serving as the foundation for Data Structures & Algorithms.',
+      'Achieved outstanding academic performance across Mathematics and Physical Sciences in Rajasthan state board examinations.',
+      'Actively participated in regional mathematics olympiads, science exhibitions, and competitive problem-solving seminars.'
     ],
-    techStack: ['Mathematics', 'Physics', 'Chemistry', 'Logic']
+    techStack: ['Mathematics (Calculus & Algebra)', 'Physics', 'Chemistry', 'Problem Solving', 'Analytical Logic']
   },
   {
     id: 'edu-3',
-    role: 'Secondary (CBSE -- X)',
+    role: 'Secondary (CBSE -- Class X)',
     company: 'Swami Vivekanand Govt. Model School',
     jobType: 'Didwana, Rajasthan',
     duration: { start: 'Apr 2019', end: 'Apr 2020' },
     points: [
-      'Completed Secondary education (Class 10th CBSE board) with high academic distinction.',
-      'Actively participated in STEM competitions and foundational computer science workshops.'
+      'Graduated Secondary Education (Class 10th CBSE Board) with high academic distinction and top grades across all core subjects.',
+      'Formed strong foundational knowledge in Computer Applications, Information Technology, General Science, and Mathematics.',
+      'Recognized for active leadership and participation in school-level STEM projects, science fairs, and introductory computer programming workshops.',
+      'Secured top positions in inter-school mathematics quizzes, science talent searches, and logical reasoning competitions.'
     ],
-    techStack: ['Mathematics', 'Science', 'English', 'Computer Foundations']
+    techStack: ['Mathematics', 'Computer Foundations', 'Information Technology', 'Science', 'Logic']
   }
 ];
 
