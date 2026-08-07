@@ -1,0 +1,53 @@
+.lc-bg-wrap {
+  border-radius: inherit;
+  position: relative;
+  overflow: hidden;
+}
+
+.lc-heatmap {
+  z-index: 0;
+  pointer-events: none;
+  grid-template-rows: repeat(10, 1fr);
+  grid-template-columns: repeat(18, 1fr);
+  gap: 4px;
+  padding: 6px;
+  display: grid;
+  position: absolute;
+  inset: 0;
+}
+
+.lc-cell {
+  background: var(--border);
+  border-radius: 2px;
+}
+
+.lc-cell.lc-low {
+  background: var(--border-strong);
+}
+
+.lc-cell.lc-mid {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.lc-cell.lc-hot {
+  background: var(--text-primary);
+  opacity: 0.8;
+}
+
+.lc-fade {
+  background: linear-gradient(to top, var(--bg-card) 0%, rgba(24, 24, 27, 0.72) 38%, transparent 68%);
+  z-index: 1;
+  pointer-events: none;
+  border-radius: inherit;
+  position: absolute;
+  inset: 0;
+}
+
+@media (max-width: 767px) {
+  .lc-heatmap {
+    grid-template-rows: repeat(10, 1fr);
+    grid-template-columns: repeat(18, 1fr);
+    gap: 4px;
+    padding: 6px;
+  }
+}

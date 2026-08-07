@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 768" width="100%" height="100%">
+  <g fill="#ffffff">
+    <!-- Left Triangle Shape -->
+    <path d="M 185 732 L 293 392 L 425 732 Z M 235 684 L 293 490 L 375 684 Z" fill-rule="evenodd" />
+
+    <!-- Middle Parallelogram Shape -->
+    <path d="M 310 288 L 470 288 L 630 732 L 470 732 Z M 370 340 L 425 340 L 570 680 L 515 680 Z" fill-rule="evenodd" />
+
+    <!-- Right Geometric Slanted S Shape -->
+    <path d="M 535 288 L 725 288 L 842 456 L 630 456 L 710 560 L 675 560 L 788 732 L 842 732 L 675 732 L 578 560 L 788 560 L 710 456 L 745 456 L 630 288 Z" fill-rule="evenodd" />
+  </g>
+</svg>
