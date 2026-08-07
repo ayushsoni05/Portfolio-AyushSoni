@@ -14,6 +14,16 @@
 
 ---
 
+## 🎨 Website Preview ("How The Site Looks")
+
+<div align="center">
+
+![Ayush Soni Portfolio Hero Banner](public/assets/site-preview.png)
+
+</div>
+
+---
+
 ## 📌 Overview
 
 Welcome to the official repository of **Ayush Soni's** developer portfolio website — a state-of-the-art, high-performance, dark/light mode web application engineered using **React 19**, **Vite**, **Tailwind CSS**, **Framer Motion**, and **Three.js / React Three Fiber**.
