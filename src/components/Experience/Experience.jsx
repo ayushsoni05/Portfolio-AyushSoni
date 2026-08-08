@@ -468,27 +468,11 @@ function CertificationsStack() {
                   loading="lazy"
                 />
 
-                {/* Name badge — always visible */}
-                <div
-                  className="absolute top-3 left-3 md:top-4 md:left-4 px-3 py-1.5 rounded-lg backdrop-blur-md"
-                  style={{
-                    backgroundColor: 'rgba(9, 9, 11, 0.75)',
-                    border: `1px solid ${cert.borderColor}`,
-                  }}
-                >
-                  <p className="text-[10px] uppercase tracking-widest font-mono" style={{ color: 'var(--text-muted)' }}>
-                    Awarded to
-                  </p>
-                  <p className="text-sm md:text-base font-bold font-[Space_Grotesk,sans-serif] text-white">
-                    Ayush Soni
-                  </p>
-                </div>
-
                 {/* Index number badge — always visible */}
                 <div
-                  className="absolute top-3 right-3 md:top-4 md:right-4 w-9 h-9 md:w-10 md:h-10 rounded-full flex items-center justify-center backdrop-blur-md"
+                  className="absolute top-3 right-3 md:top-4 md:right-4 w-9 h-9 md:w-10 md:h-10 rounded-full flex items-center justify-center backdrop-blur-md shadow-md"
                   style={{
-                    backgroundColor: `${cert.accentColor}20`,
+                    backgroundColor: 'rgba(9, 9, 11, 0.7)',
                     border: `1px solid ${cert.borderColor}`,
                   }}
                 >
