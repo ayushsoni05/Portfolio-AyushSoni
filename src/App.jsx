@@ -6,11 +6,11 @@ import Hero from './components/Hero/Hero';
 import CustomCursor from './components/CustomCursor';
 import Preloader from './components/Preloader';
 
-const Services = lazy(() => import('./components/Services/Services'));
-const Projects = lazy(() => import('./components/Projects/Projects'));
-const TechStack = lazy(() => import('./components/TechStack/TechStack'));
-const Experience = lazy(() => import('./components/Experience/Experience'));
-const Contact = lazy(() => import('./components/Contact/Contact'));
+import Services from './components/Services/Services';
+import Projects from './components/Projects/Projects';
+import TechStack from './components/TechStack/TechStack';
+import Experience from './components/Experience/Experience';
+import Contact from './components/Contact/Contact';
 
 function MainContent() {
   const { theme } = useTheme();
