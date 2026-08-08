@@ -4,6 +4,7 @@ import SectionHeader from '../SectionHeader';
 import { useTheme } from '../../context/ThemeContext';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
+import { ContainerScroll, CardSticky } from '@/components/ui/cards-stack';
 
 const WORK_EXPERIENCE = [
   {
@@ -68,13 +69,81 @@ const EDUCATION = [
   }
 ];
 
+const CERTIFICATIONS = [
+  {
+    id: 'cert-1',
+    title: 'IBM Generative AI Engineering',
+    issuer: 'IBM Certification',
+    year: '2024',
+    badge: 'AI & LLM Architecture',
+    accentColor: '#38bdf8',
+    bgGradient: 'linear-gradient(135deg, rgba(14, 165, 233, 0.15), rgba(15, 23, 42, 0.95))',
+    borderColor: 'rgba(56, 189, 248, 0.4)',
+    description: 'Mastered Large Language Models (LLMs), Prompt Engineering, RAG (Retrieval-Augmented Generation) architectures, fine-tuning generative models, and deploying autonomous AI agents with LangChain & Python.',
+    skills: ['Generative AI', 'LLMs', 'RAG Architecture', 'Prompt Engineering', 'LangChain', 'Python AI'],
+    icon: '🤖'
+  },
+  {
+    id: 'cert-2',
+    title: 'Meta Front-End Developer Specialization',
+    issuer: 'Meta Certified Professional',
+    year: '2024',
+    badge: 'Frontend Engineering',
+    accentColor: '#60a5fa',
+    bgGradient: 'linear-gradient(135deg, rgba(96, 165, 250, 0.15), rgba(15, 23, 42, 0.95))',
+    borderColor: 'rgba(96, 165, 250, 0.4)',
+    description: 'Advanced React 19 component architecture, state management with Redux & Zustand, responsive UI/UX design patterns, web application performance tuning, accessibility (WCAG), and Jest E2E testing.',
+    skills: ['React 19', 'JavaScript (ES6+)', 'Redux & Zustand', 'UI/UX Architecture', 'CSS3 & Tailwind', 'Jest Testing'],
+    icon: '⚛️'
+  },
+  {
+    id: 'cert-3',
+    title: 'IBM Python for Data Science & AI',
+    issuer: 'IBM Certification',
+    year: '2023',
+    badge: 'Data Science & Machine Learning',
+    accentColor: '#f59e0b',
+    bgGradient: 'linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(24, 24, 27, 0.95))',
+    borderColor: 'rgba(245, 158, 11, 0.4)',
+    description: 'In-depth specialization in Python programming, numerical data processing with NumPy, data manipulation with Pandas, computer vision modeling with OpenCV, and RESTful API integrations.',
+    skills: ['Python 3', 'NumPy', 'Pandas', 'OpenCV', 'REST APIs', 'Data Analysis'],
+    icon: '🐍'
+  },
+  {
+    id: 'cert-4',
+    title: 'Cisco JavaScript Essentials 1 & 2',
+    issuer: 'Cisco Networking Academy',
+    year: '2023',
+    badge: 'Core Language Mechanics',
+    accentColor: '#c084fc',
+    bgGradient: 'linear-gradient(135deg, rgba(192, 132, 252, 0.15), rgba(24, 24, 27, 0.95))',
+    borderColor: 'rgba(192, 132, 252, 0.4)',
+    description: 'Comprehensive mastery of JavaScript core engine mechanics, asynchronous control flow (Promises, async/await), DOM APIs, closure encapsulation, prototype inheritance, and security best practices.',
+    skills: ['JavaScript ES6+', 'Async / Await', 'DOM API', 'OOP Concepts', 'Web Security', 'Algorithms'],
+    icon: '⚡'
+  },
+  {
+    id: 'cert-5',
+    title: 'Infosys DBMS Fundamentals',
+    issuer: 'Infosys Certification',
+    year: '2023',
+    badge: 'Database Engineering',
+    accentColor: '#2dd4bf',
+    bgGradient: 'linear-gradient(135deg, rgba(45, 212, 191, 0.15), rgba(15, 23, 42, 0.95))',
+    borderColor: 'rgba(45, 212, 191, 0.4)',
+    description: 'Relational database architecture, advanced SQL query design, database normalization (1NF-3NF), indexing strategies, transaction ACID compliance, and MySQL performance optimization.',
+    skills: ['Relational DBMS', 'SQL Query Tuning', 'Database Normalization', 'ACID Properties', 'MySQL', 'Indexing'],
+    icon: '🛢️'
+  }
+];
+
 function CenteredTabSwitcher({ activeTab, setActiveTab }) {
   return (
     <div className="mb-8 md:mb-10 flex justify-center w-full pt-10">
-      <div className="flex items-center gap-6">
+      <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
         <button
           onClick={() => setActiveTab('experience')}
-          className={`cursor-target cursor-none font-[Space_Grotesk,sans-serif] text-[18px] md:text-[22px] font-bold tracking-widest uppercase transition-all duration-300 ${
+          className={`cursor-target cursor-none font-[Space_Grotesk,sans-serif] text-[16px] md:text-[22px] font-bold tracking-widest uppercase transition-all duration-300 ${
             activeTab === 'experience'
               ? 'text-[var(--text-primary)] opacity-100 scale-105'
               : 'text-[var(--text-secondary)] opacity-40 hover:opacity-80 blur-[0.5px]'
@@ -85,13 +154,24 @@ function CenteredTabSwitcher({ activeTab, setActiveTab }) {
         <span className="text-[var(--text-muted)] text-[18px] select-none">•</span>
         <button
           onClick={() => setActiveTab('education')}
-          className={`cursor-target cursor-none font-[Space_Grotesk,sans-serif] text-[18px] md:text-[22px] font-bold tracking-widest uppercase transition-all duration-300 ${
+          className={`cursor-target cursor-none font-[Space_Grotesk,sans-serif] text-[16px] md:text-[22px] font-bold tracking-widest uppercase transition-all duration-300 ${
             activeTab === 'education'
               ? 'text-[var(--text-primary)] opacity-100 scale-105'
               : 'text-[var(--text-secondary)] opacity-40 hover:opacity-80 blur-[0.5px]'
           }`}
         >
           EDUCATION
+        </button>
+        <span className="text-[var(--text-muted)] text-[18px] select-none">•</span>
+        <button
+          onClick={() => setActiveTab('certifications')}
+          className={`cursor-target cursor-none font-[Space_Grotesk,sans-serif] text-[16px] md:text-[22px] font-bold tracking-widest uppercase transition-all duration-300 ${
+            activeTab === 'certifications'
+              ? 'text-[var(--text-primary)] opacity-100 scale-105'
+              : 'text-[var(--text-secondary)] opacity-40 hover:opacity-80 blur-[0.5px]'
+          }`}
+        >
+          CERTIFICATIONS
         </button>
       </div>
     </div>
@@ -296,6 +376,93 @@ function TimelineList({ data }) {
   );
 }
 
+{/* --- 3D Cards Stack Component for Certifications --- */}
+function CertificationsStack() {
+  const { theme } = useTheme();
+
+  return (
+    <div className="w-full max-w-4xl mx-auto pt-10 pb-20">
+      <ContainerScroll className="space-y-6 md:space-y-8 py-8 md:py-12">
+        {CERTIFICATIONS.map((cert, index) => (
+          <CardSticky
+            key={cert.id}
+            index={index + 1}
+            incrementY={42}
+            incrementZ={8}
+            className="cursor-target w-full rounded-2xl border p-6 md:p-10 shadow-2xl backdrop-blur-xl transition-all duration-300 relative overflow-hidden"
+            style={{
+              background: theme === 'dark' ? cert.bgGradient : 'var(--bg-secondary)',
+              borderColor: cert.borderColor,
+              boxShadow: `0 20px 50px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1)`,
+            }}
+          >
+            {/* Header Badge & Icon Row */}
+            <div className="flex items-center justify-between gap-4 mb-4">
+              <div className="flex items-center gap-3">
+                <span className="text-3xl md:text-4xl">{cert.icon}</span>
+                <div>
+                  <span
+                    className="inline-block text-[11px] md:text-[12px] font-mono font-bold uppercase tracking-widest px-3 py-1 rounded-full border"
+                    style={{
+                      color: cert.accentColor,
+                      borderColor: cert.borderColor,
+                      backgroundColor: `${cert.accentColor}15`,
+                    }}
+                  >
+                    {cert.badge}
+                  </span>
+                  <p className="text-xs md:text-sm font-medium mt-1" style={{ color: 'var(--text-muted)' }}>
+                    {cert.issuer} • {cert.year}
+                  </p>
+                </div>
+              </div>
+              <span
+                className="text-2xl md:text-3xl font-mono font-bold opacity-60"
+                style={{ color: cert.accentColor }}
+              >
+                0{index + 1}
+              </span>
+            </div>
+
+            {/* Certification Title */}
+            <h3
+              className="font-[Space_Grotesk,sans-serif] font-bold text-[22px] md:text-[30px] leading-tight mb-4"
+              style={{ color: 'var(--text-primary)' }}
+            >
+              {cert.title}
+            </h3>
+
+            {/* Description */}
+            <p
+              className="font-[Space_Grotesk,sans-serif] font-normal text-[15px] md:text-[17px] leading-[1.75] tracking-wide mb-6"
+              style={{ color: 'var(--text-secondary)' }}
+            >
+              {cert.description}
+            </p>
+
+            {/* Skill Tags */}
+            <div className="flex flex-wrap gap-2 pt-2 border-t border-white/10">
+              {cert.skills.map((skill) => (
+                <span
+                  key={skill}
+                  className="inline-block px-3 py-1 text-[12px] md:text-[13px] font-[Space_Grotesk,sans-serif] font-medium rounded-md border"
+                  style={{
+                    color: 'var(--text-secondary)',
+                    borderColor: 'var(--border)',
+                    backgroundColor: 'rgba(255, 255, 255, 0.03)',
+                  }}
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </CardSticky>
+        ))}
+      </ContainerScroll>
+    </div>
+  );
+}
+
 export default function Experience() {
   const [activeTab, setActiveTab] = useState('experience');
   const headerRef = useRef(null);
@@ -303,6 +470,22 @@ export default function Experience() {
 
   const data = activeTab === 'experience' ? WORK_EXPERIENCE : EDUCATION;
   const cubicEase = [0.22, 1, 0.36, 1];
+
+  const getHeadingLines = () => {
+    if (activeTab === 'experience') return ['WORK', 'EXPERIENCE'];
+    if (activeTab === 'education') return ['EDUCATION &', 'ACADEMICS'];
+    return ['VERIFIED', 'CERTIFICATIONS'];
+  };
+
+  const getDescription = () => {
+    if (activeTab === 'experience') {
+      return 'A timeline of my professional experience, showcasing the internships, projects, and real-world engineering challenges that have shaped my growth as a full-stack developer.';
+    }
+    if (activeTab === 'education') {
+      return 'My academic background, highlighting the foundational knowledge and coursework that shapes my approach to software engineering.';
+    }
+    return 'Industry certifications and professional credentials validating my technical mastery across AI Engineering, Frontend Development, Data Science, and DBMS.';
+  };
 
   return (
     <section id="experience" className="pt-20 md:pt-30 lg:pt-[100px]" style={{ background: 'var(--bg-primary)' }}>
@@ -322,19 +505,15 @@ export default function Experience() {
             >
               <SectionHeader
                 label="MY JOURNEY"
-                headingLines={activeTab === 'experience' ? ['WORK', 'EXPERIENCE'] : ['EDUCATION &', 'ACADEMICS']}
-                description={
-                  activeTab === 'experience'
-                    ? 'A timeline of my professional experience, showcasing the internships, projects, and real-world engineering challenges that have shaped my growth as a full-stack developer.'
-                    : 'My academic background, highlighting the foundational knowledge and coursework that shapes my approach to software engineering.'
-                }
+                headingLines={getHeadingLines()}
+                description={getDescription()}
                 inView={headerInView}
               />
             </motion.div>
           </AnimatePresence>
         </div>
 
-        {/* Timeline List */}
+        {/* Tab Content Display */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
@@ -343,7 +522,11 @@ export default function Experience() {
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.35, ease: cubicEase }}
           >
-            <TimelineList data={data} />
+            {activeTab === 'certifications' ? (
+              <CertificationsStack />
+            ) : (
+              <TimelineList data={data} />
+            )}
           </motion.div>
         </AnimatePresence>
 
