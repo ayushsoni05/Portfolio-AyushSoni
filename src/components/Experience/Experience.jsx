@@ -403,14 +403,17 @@ function CertificationsStack() {
             Professional{' '}
             <span style={{ color: '#60a5fa' }}>Certifications</span>
           </h2>
-          <p
-            className="max-w-prose text-sm md:text-base leading-relaxed font-[Space_Grotesk,sans-serif]"
-            style={{ color: 'var(--text-secondary)' }}
-          >
-            Industry credentials from IBM, Meta, Cisco, and Infosys — validating
-            technical mastery across AI Engineering, Frontend Development, Data
-            Science, and Database Engineering. Hover over a card to see details.
-          </p>
+          <div className="max-w-prose text-sm md:text-base leading-relaxed font-[Space_Grotesk,sans-serif] space-y-4" style={{ color: 'var(--text-secondary)' }}>
+            <p>
+              A curated showcase of verified industry certifications earned through rigorous coursework, practical evaluations, and hands-on capstone engineering.
+            </p>
+            <p className="text-[13px] md:text-sm" style={{ color: 'var(--text-muted)' }}>
+              Issued by global technology leaders including <strong className="text-[var(--text-primary)] font-medium">IBM</strong>, <strong className="text-[var(--text-primary)] font-medium">Meta</strong>, <strong className="text-[var(--text-primary)] font-medium">Cisco</strong>, and <strong className="text-[var(--text-primary)] font-medium">Infosys</strong> — establishing technical competency across Generative AI & LLM Architectures, Modern React Frontend Engineering, Data Science & Machine Learning, and Relational Database Systems.
+            </p>
+            <p className="inline-flex items-center gap-2 pt-2 text-xs font-mono text-[#60a5fa]">
+              <span>✦</span> Hover over any certificate card to inspect verified skills & detailed competencies.
+            </p>
+          </div>
         </div>
 
         {/* RIGHT — Scrolling card stack with 400vh runway */}
