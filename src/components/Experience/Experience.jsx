@@ -381,14 +381,14 @@ function CertificationsStack() {
   const { theme } = useTheme();
 
   return (
-    <div className="w-full max-w-4xl mx-auto pt-10 pb-20">
-      <ContainerScroll className="space-y-6 md:space-y-8 py-8 md:py-12">
+    <div className="w-full max-w-4xl mx-auto pt-6 pb-24 md:pb-36 relative z-10">
+      <ContainerScroll className="space-y-6 md:space-y-8 py-6 md:py-10">
         {CERTIFICATIONS.map((cert, index) => (
           <CardSticky
             key={cert.id}
             index={index + 1}
-            incrementY={42}
-            incrementZ={8}
+            incrementY={36}
+            incrementZ={6}
             className="cursor-target w-full rounded-2xl border p-6 md:p-10 shadow-2xl backdrop-blur-xl transition-all duration-300 relative overflow-hidden"
             style={{
               background: theme === 'dark' ? cert.bgGradient : 'var(--bg-secondary)',
@@ -488,7 +488,7 @@ export default function Experience() {
   };
 
   return (
-    <section id="experience" className="pt-20 md:pt-30 lg:pt-[100px]" style={{ background: 'var(--bg-primary)' }}>
+    <section id="experience" className="pt-20 md:pt-30 lg:pt-[100px] relative z-10" style={{ background: 'var(--bg-primary)' }}>
       <div className="container-custom">
         {/* Centered Top Tab Switcher */}
         <CenteredTabSwitcher activeTab={activeTab} setActiveTab={setActiveTab} />

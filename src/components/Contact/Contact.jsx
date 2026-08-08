@@ -774,7 +774,7 @@ export default function Contact() {
     : itemVariants;
 
   return (
-    <section id="contact" className="min-h-screen flex flex-col justify-center pb-6 md:pb-10" style={{ background: 'var(--bg-primary)' }}>
+    <section id="contact" className="relative z-20 min-h-screen flex flex-col justify-center pb-6 md:pb-10" style={{ background: 'var(--bg-primary)' }}>
       <div className="container-custom">
         <div ref={headerRef}>
           <motion.div
