@@ -376,89 +376,114 @@ function TimelineList({ data }) {
   );
 }
 
-{/* --- 3D Cards Stack Component for Certifications --- */}
+{/* --- Certifications: Process-style two-column sticky + scroll layout --- */}
 function CertificationsStack() {
   const { theme } = useTheme();
 
   return (
-    <div className="w-full max-w-4xl mx-auto pt-6 pb-24 md:pb-36 relative z-10">
-      <ContainerScroll className="space-y-6 md:space-y-8 py-6 md:py-10">
-        {CERTIFICATIONS.map((cert, index) => (
-          <CardSticky
-            key={cert.id}
-            index={index + 1}
-            incrementY={36}
-            incrementZ={6}
-            className="cursor-target w-full rounded-2xl border p-6 md:p-10 shadow-2xl backdrop-blur-xl transition-all duration-300 relative overflow-hidden"
-            style={{
-              background: theme === 'dark' ? cert.bgGradient : 'var(--bg-secondary)',
-              borderColor: cert.borderColor,
-              boxShadow: `0 20px 50px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1)`,
-            }}
+    <div className="w-full pt-10 md:pt-16 pb-20">
+      <div className="grid md:grid-cols-2 md:gap-10 xl:gap-16">
+        {/* LEFT — Sticky info panel, stays pinned while cards scroll */}
+        <div className="left-0 top-0 md:sticky md:h-svh md:py-12 mb-8 md:mb-0">
+          <p
+            className="text-xs font-mono uppercase tracking-widest"
+            style={{ color: 'var(--text-muted)' }}
           >
-            {/* Header Badge & Icon Row */}
-            <div className="flex items-center justify-between gap-4 mb-4">
-              <div className="flex items-center gap-3">
-                <span className="text-3xl md:text-4xl">{cert.icon}</span>
-                <div>
-                  <span
-                    className="inline-block text-[11px] md:text-[12px] font-mono font-bold uppercase tracking-widest px-3 py-1 rounded-full border"
-                    style={{
-                      color: cert.accentColor,
-                      borderColor: cert.borderColor,
-                      backgroundColor: `${cert.accentColor}15`,
-                    }}
-                  >
-                    {cert.badge}
-                  </span>
-                  <p className="text-xs md:text-sm font-medium mt-1" style={{ color: 'var(--text-muted)' }}>
-                    {cert.issuer} • {cert.year}
-                  </p>
-                </div>
+            verified credentials
+          </p>
+          <h2
+            className="mb-6 mt-4 text-3xl md:text-4xl font-bold tracking-tight font-[Space_Grotesk,sans-serif]"
+            style={{ color: 'var(--text-primary)' }}
+          >
+            Professional{' '}
+            <span style={{ color: '#60a5fa' }}>Certifications</span>
+          </h2>
+          <p
+            className="max-w-prose text-sm md:text-base leading-relaxed font-[Space_Grotesk,sans-serif]"
+            style={{ color: 'var(--text-secondary)' }}
+          >
+            Industry credentials from IBM, Meta, Cisco, and Infosys — validating
+            technical mastery across AI Engineering, Frontend Development, Data
+            Science, and Database Engineering.
+          </p>
+        </div>
+
+        {/* RIGHT — Scrolling card stack with 400vh runway */}
+        <ContainerScroll className="min-h-[400vh] space-y-8 py-12">
+          {CERTIFICATIONS.map((cert, index) => (
+            <CardSticky
+              key={cert.id}
+              index={index + 2}
+              incrementY={30}
+              incrementZ={8}
+              className="cursor-target rounded-2xl border p-6 md:p-8 shadow-lg backdrop-blur-md transition-all duration-300"
+              style={{
+                background: theme === 'dark' ? cert.bgGradient : 'var(--bg-secondary)',
+                borderColor: cert.borderColor,
+                boxShadow: '0 16px 40px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08)',
+              }}
+            >
+              {/* Card header: title + number */}
+              <div className="flex items-center justify-between gap-4">
+                <h2
+                  className="my-4 text-xl md:text-2xl font-bold tracking-tighter font-[Space_Grotesk,sans-serif]"
+                  style={{ color: 'var(--text-primary)' }}
+                >
+                  {cert.title}
+                </h2>
+                <h3
+                  className="text-2xl font-bold font-mono"
+                  style={{ color: cert.accentColor }}
+                >
+                  {String(index + 1).padStart(2, '0')}
+                </h3>
               </div>
-              <span
-                className="text-2xl md:text-3xl font-mono font-bold opacity-60"
-                style={{ color: cert.accentColor }}
-              >
-                0{index + 1}
-              </span>
-            </div>
 
-            {/* Certification Title */}
-            <h3
-              className="font-[Space_Grotesk,sans-serif] font-bold text-[22px] md:text-[30px] leading-tight mb-4"
-              style={{ color: 'var(--text-primary)' }}
-            >
-              {cert.title}
-            </h3>
-
-            {/* Description */}
-            <p
-              className="font-[Space_Grotesk,sans-serif] font-normal text-[15px] md:text-[17px] leading-[1.75] tracking-wide mb-6"
-              style={{ color: 'var(--text-secondary)' }}
-            >
-              {cert.description}
-            </p>
-
-            {/* Skill Tags */}
-            <div className="flex flex-wrap gap-2 pt-2 border-t border-white/10">
-              {cert.skills.map((skill) => (
+              {/* Badge + Issuer row */}
+              <div className="flex flex-wrap items-center gap-2 mb-3">
+                <span className="text-2xl">{cert.icon}</span>
                 <span
-                  key={skill}
-                  className="inline-block px-3 py-1 text-[12px] md:text-[13px] font-[Space_Grotesk,sans-serif] font-medium rounded-md border"
+                  className="text-[11px] font-mono font-bold uppercase tracking-widest px-3 py-1 rounded-full border"
                   style={{
-                    color: 'var(--text-secondary)',
-                    borderColor: 'var(--border)',
-                    backgroundColor: 'rgba(255, 255, 255, 0.03)',
+                    color: cert.accentColor,
+                    borderColor: cert.borderColor,
+                    backgroundColor: `${cert.accentColor}15`,
                   }}
                 >
-                  {skill}
+                  {cert.badge}
                 </span>
-              ))}
-            </div>
-          </CardSticky>
-        ))}
-      </ContainerScroll>
+                <span className="text-xs" style={{ color: 'var(--text-muted)' }}>
+                  {cert.issuer} • {cert.year}
+                </span>
+              </div>
+
+              {/* Description */}
+              <p
+                className="text-sm md:text-[15px] leading-relaxed mb-4 font-[Space_Grotesk,sans-serif]"
+                style={{ color: 'var(--text-secondary)' }}
+              >
+                {cert.description}
+              </p>
+
+              {/* Skill tags */}
+              <div className="flex flex-wrap gap-2 pt-3 border-t" style={{ borderColor: 'var(--border)' }}>
+                {cert.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="px-2.5 py-1 text-[11px] md:text-[12px] font-[Space_Grotesk,sans-serif] font-medium rounded-md border"
+                    style={{
+                      color: 'var(--text-secondary)',
+                      borderColor: 'var(--border)',
+                    }}
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </CardSticky>
+          ))}
+        </ContainerScroll>
+      </div>
     </div>
   );
 }
@@ -488,7 +513,7 @@ export default function Experience() {
   };
 
   return (
-    <section id="experience" className="pt-20 md:pt-30 lg:pt-[100px] relative z-10" style={{ background: 'var(--bg-primary)' }}>
+    <section id="experience" className="pt-20 md:pt-30 lg:pt-[100px]" style={{ background: 'var(--bg-primary)' }}>
       <div className="container-custom">
         {/* Centered Top Tab Switcher */}
         <CenteredTabSwitcher activeTab={activeTab} setActiveTab={setActiveTab} />
