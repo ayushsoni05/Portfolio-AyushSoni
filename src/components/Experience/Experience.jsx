@@ -421,51 +421,46 @@ function CertificationsStack() {
               index={index + 2}
               incrementY={30}
               incrementZ={8}
-              className="group cursor-target rounded-2xl border overflow-hidden shadow-lg transition-all duration-300"
+              className="group cursor-target overflow-hidden shadow-lg transition-all duration-300"
               style={{
-                borderColor: cert.borderColor,
-                boxShadow: '0 16px 40px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08)',
+                borderRadius: '18px',
+                backgroundColor: 'var(--bg-card)',
+                border: '1px solid var(--border-strong)',
+                boxShadow: '0 25px 60px var(--shadow-color), inset 0 0 0 1px rgba(255, 255, 255, 0.04)',
               }}
             >
-              {/* Top bar: title + number — always visible */}
+              {/* ── Mac Browser Top Bar ── */}
               <div
-                className="flex items-center justify-between gap-3 px-5 py-3 md:px-6 md:py-4"
+                className="flex items-center relative shrink-0 h-[42px] md:h-[46px] px-[14px] md:px-[18px]"
                 style={{
-                  background: theme === 'dark' ? cert.bgGradient : 'var(--bg-secondary)',
+                  backgroundColor: 'var(--bg-card)',
+                  borderBottom: theme === 'light' ? '1px solid var(--border-strong)' : '1px solid var(--border)',
                 }}
               >
-                <div className="flex items-center gap-2 min-w-0">
-                  <span className="text-xl shrink-0">{cert.icon}</span>
-                  <h2
-                    className="text-base md:text-lg font-bold tracking-tight font-[Space_Grotesk,sans-serif] truncate"
-                    style={{ color: 'var(--text-primary)' }}
-                  >
-                    {cert.title}
-                  </h2>
+                {/* Traffic Dot Buttons */}
+                <div className="flex absolute left-[14px] md:left-[18px] gap-[7px] md:gap-[9px]">
+                  <span className="w-[11px] h-[11px] md:w-[13px] md:h-[13px] rounded-[50%]" style={{ backgroundColor: '#ff5f56' }} />
+                  <span className="w-[11px] h-[11px] md:w-[13px] md:h-[13px] rounded-[50%]" style={{ backgroundColor: '#ffbd2e' }} />
+                  <span className="w-[11px] h-[11px] md:w-[13px] md:h-[13px] rounded-[50%]" style={{ backgroundColor: '#27c93f' }} />
                 </div>
-                <div className="flex items-center gap-2 shrink-0">
-                  <span
-                    className="hidden sm:inline-block text-[10px] font-mono font-bold uppercase tracking-widest px-2.5 py-0.5 rounded-full border"
-                    style={{
-                      color: cert.accentColor,
-                      borderColor: cert.borderColor,
-                      backgroundColor: `${cert.accentColor}15`,
-                    }}
-                  >
-                    {cert.badge}
-                  </span>
-                  <span
-                    className="text-xl font-bold font-mono"
-                    style={{ color: cert.accentColor }}
-                  >
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
+
+                {/* Domain Pill — cert issuer */}
+                <div
+                  className="flex items-center justify-center h-[26px] md:h-[28px] rounded-[8px] text-[12px] md:text-[14px] font-semibold py-3 px-4 md:px-5 max-w-[60%] whitespace-nowrap overflow-hidden text-ellipsis tracking-wide font-[Space_Grotesk,sans-serif]"
+                  style={{
+                    margin: '0 auto',
+                    backgroundColor: 'var(--bg-primary)',
+                    border: '1px solid var(--border-strong)',
+                    color: theme === 'light' ? 'var(--text-primary)' : 'var(--text-secondary)',
+                  }}
+                >
+                  {cert.issuer}
                 </div>
               </div>
 
-              {/* Certificate image + hover overlay container */}
-              <div className="relative w-full aspect-[3/2] overflow-hidden">
-                {/* Certificate image — always visible */}
+              {/* ── Certificate Image + Hover Overlay ── */}
+              <div className="relative w-full aspect-[3/2] overflow-hidden m-[14px] mt-0 rounded-xl" style={{ width: 'calc(100% - 28px)', border: '1px solid var(--border-strong)' }}>
+                {/* Certificate image */}
                 <img
                   src={cert.image}
                   alt={`${cert.title} certificate`}
@@ -473,25 +468,65 @@ function CertificationsStack() {
                   loading="lazy"
                 />
 
-                {/* Hover overlay — slides up from bottom */}
+                {/* Name badge — always visible */}
                 <div
-                  className="absolute inset-0 flex flex-col justify-end p-5 md:p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                  className="absolute top-3 left-3 md:top-4 md:left-4 px-3 py-1.5 rounded-lg backdrop-blur-md"
                   style={{
-                    background: theme === 'dark'
-                      ? 'linear-gradient(to top, rgba(9, 9, 11, 0.97) 60%, rgba(9, 9, 11, 0.85) 80%, transparent 100%)'
-                      : 'linear-gradient(to top, rgba(250, 250, 250, 0.97) 60%, rgba(250, 250, 250, 0.85) 80%, transparent 100%)',
+                    backgroundColor: 'rgba(9, 9, 11, 0.75)',
+                    border: `1px solid ${cert.borderColor}`,
                   }}
                 >
+                  <p className="text-[10px] uppercase tracking-widest font-mono" style={{ color: 'var(--text-muted)' }}>
+                    Awarded to
+                  </p>
+                  <p className="text-sm md:text-base font-bold font-[Space_Grotesk,sans-serif] text-white">
+                    Ayush Soni
+                  </p>
+                </div>
+
+                {/* Index number badge — always visible */}
+                <div
+                  className="absolute top-3 right-3 md:top-4 md:right-4 w-9 h-9 md:w-10 md:h-10 rounded-full flex items-center justify-center backdrop-blur-md"
+                  style={{
+                    backgroundColor: `${cert.accentColor}20`,
+                    border: `1px solid ${cert.borderColor}`,
+                  }}
+                >
+                  <span className="text-sm md:text-base font-bold font-mono" style={{ color: cert.accentColor }}>
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                </div>
+
+                {/* Hover overlay — slides up from bottom */}
+                <div
+                  className="absolute inset-0 flex flex-col justify-end p-4 md:p-5 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                  style={{
+                    background: theme === 'dark'
+                      ? 'linear-gradient(to top, rgba(9, 9, 11, 0.97) 55%, rgba(9, 9, 11, 0.85) 75%, transparent 100%)'
+                      : 'linear-gradient(to top, rgba(250, 250, 250, 0.97) 55%, rgba(250, 250, 250, 0.85) 75%, transparent 100%)',
+                  }}
+                >
+                  {/* Title + Badge */}
+                  <div className="flex flex-wrap items-center gap-2 mb-2">
+                    <span className="text-lg">{cert.icon}</span>
+                    <h3 className="text-base md:text-lg font-bold font-[Space_Grotesk,sans-serif]" style={{ color: 'var(--text-primary)' }}>
+                      {cert.title}
+                    </h3>
+                    <span
+                      className="text-[9px] font-mono font-bold uppercase tracking-widest px-2 py-0.5 rounded-full border"
+                      style={{ color: cert.accentColor, borderColor: cert.borderColor, backgroundColor: `${cert.accentColor}15` }}
+                    >
+                      {cert.badge}
+                    </span>
+                  </div>
+
                   {/* Issuer + Year */}
                   <p className="text-xs font-mono mb-2" style={{ color: cert.accentColor }}>
                     {cert.issuer} • {cert.year}
                   </p>
 
                   {/* Description */}
-                  <p
-                    className="text-sm md:text-[14px] leading-relaxed mb-4 font-[Space_Grotesk,sans-serif]"
-                    style={{ color: 'var(--text-secondary)' }}
-                  >
+                  <p className="text-[13px] md:text-sm leading-relaxed mb-3 font-[Space_Grotesk,sans-serif]" style={{ color: 'var(--text-secondary)' }}>
                     {cert.description}
                   </p>
 
