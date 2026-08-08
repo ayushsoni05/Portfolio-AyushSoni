@@ -79,7 +79,7 @@ const CERTIFICATIONS = [
     accentColor: '#38bdf8',
     bgGradient: 'linear-gradient(135deg, rgba(14, 165, 233, 0.15), rgba(15, 23, 42, 0.95))',
     borderColor: 'rgba(56, 189, 248, 0.4)',
-    description: 'Mastered Large Language Models (LLMs), Prompt Engineering, RAG (Retrieval-Augmented Generation) architectures, fine-tuning generative models, and deploying autonomous AI agents with LangChain & Python.',
+    description: 'Successfully completed IBM\'s comprehensive Generative AI Engineering specialization. Developed deep technical competency in Large Language Model (LLM) architectures, Retrieval-Augmented Generation (RAG) pipelines, advanced prompt engineering, and fine-tuning open-source models. Built autonomous AI agents and vector database search engines using LangChain, LlamaIndex, ChromaDB, and Python, implementing robust guardrails for enterprise AI deployment.',
     skills: ['Generative AI', 'LLMs', 'RAG Architecture', 'Prompt Engineering', 'LangChain', 'Python AI'],
     icon: '🤖',
     image: '/assets/cert-ibm-genai.jpg'
@@ -93,7 +93,7 @@ const CERTIFICATIONS = [
     accentColor: '#60a5fa',
     bgGradient: 'linear-gradient(135deg, rgba(96, 165, 250, 0.15), rgba(15, 23, 42, 0.95))',
     borderColor: 'rgba(96, 165, 250, 0.4)',
-    description: 'Advanced React 19 component architecture, state management with Redux & Zustand, responsive UI/UX design patterns, web application performance tuning, accessibility (WCAG), and Jest E2E testing.',
+    description: 'Earned Meta\'s rigorous 9-course professional engineering specialization. Mastered modern React 19 architecture, complex client-side state management (Redux Toolkit & Zustand), responsive web design systems, accessibility compliance (WCAG 2.1), and web performance optimization. Implemented comprehensive unit and integration test suites using Jest and React Testing Library.',
     skills: ['React 19', 'JavaScript (ES6+)', 'Redux & Zustand', 'UI/UX Architecture', 'CSS3 & Tailwind', 'Jest Testing'],
     icon: '⚛️',
     image: '/assets/cert-meta-frontend.jpg'
@@ -107,7 +107,7 @@ const CERTIFICATIONS = [
     accentColor: '#f59e0b',
     bgGradient: 'linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(24, 24, 27, 0.95))',
     borderColor: 'rgba(245, 158, 11, 0.4)',
-    description: 'In-depth specialization in Python programming, numerical data processing with NumPy, data manipulation with Pandas, computer vision modeling with OpenCV, and RESTful API integrations.',
+    description: 'Accomplished IBM\'s specialized program focusing on core Python data engineering and artificial intelligence. Gained practical experience in high-performance numerical computing with NumPy, complex data wrangling & exploratory analysis with Pandas, computer vision processing using OpenCV, and RESTful API integrations to extract actionable insights from large unstructured datasets.',
     skills: ['Python 3', 'NumPy', 'Pandas', 'OpenCV', 'REST APIs', 'Data Analysis'],
     icon: '🐍',
     image: '/assets/cert-ibm-python.jpg'
@@ -121,7 +121,7 @@ const CERTIFICATIONS = [
     accentColor: '#c084fc',
     bgGradient: 'linear-gradient(135deg, rgba(192, 132, 252, 0.15), rgba(24, 24, 27, 0.95))',
     borderColor: 'rgba(192, 132, 252, 0.4)',
-    description: 'Comprehensive mastery of JavaScript core engine mechanics, asynchronous control flow (Promises, async/await), DOM APIs, closure encapsulation, prototype inheritance, and security best practices.',
+    description: 'Validated foundational and advanced JavaScript language mastery through Cisco Networking Academy\'s dual-tier certification. Demonstrated deep understanding of V8 engine execution contexts, closure scope, prototype inheritance, asynchronous event loops (Promises & Async/Await), dynamic DOM manipulation strategies, and defensive web application security practices.',
     skills: ['JavaScript ES6+', 'Async / Await', 'DOM API', 'OOP Concepts', 'Web Security', 'Algorithms'],
     icon: '⚡',
     image: '/assets/cert-cisco-js.jpg'
@@ -135,7 +135,7 @@ const CERTIFICATIONS = [
     accentColor: '#2dd4bf',
     bgGradient: 'linear-gradient(135deg, rgba(45, 212, 191, 0.15), rgba(15, 23, 42, 0.95))',
     borderColor: 'rgba(45, 212, 191, 0.4)',
-    description: 'Relational database architecture, advanced SQL query design, database normalization (1NF-3NF), indexing strategies, transaction ACID compliance, and MySQL performance optimization.',
+    description: 'Completed Infosys\'s database engineering specialization focused on enterprise database architecture and query optimization. Mastered relational database management systems (RDBMS), 1NF-3NF normalization paradigms, complex SQL query tuning, indexing data structures (B-Trees), and ACID transaction guarantees for high-concurrency database workloads.',
     skills: ['Relational DBMS', 'SQL Query Tuning', 'Database Normalization', 'ACID Properties', 'MySQL', 'Indexing'],
     icon: '🛢️',
     image: '/assets/cert-infosys-dbms.jpg'
@@ -483,17 +483,17 @@ function CertificationsStack() {
 
                 {/* Hover overlay — slides up from bottom */}
                 <div
-                  className="absolute inset-0 flex flex-col justify-end p-4 md:p-5 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                  className="absolute inset-0 flex flex-col justify-end p-4 md:p-5 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] overflow-y-auto scrollbar-none backdrop-blur-md"
                   style={{
                     background: theme === 'dark'
-                      ? 'linear-gradient(to top, rgba(9, 9, 11, 0.97) 55%, rgba(9, 9, 11, 0.85) 75%, transparent 100%)'
-                      : 'linear-gradient(to top, rgba(250, 250, 250, 0.97) 55%, rgba(250, 250, 250, 0.85) 75%, transparent 100%)',
+                      ? 'linear-gradient(to top, rgba(9, 9, 11, 0.98) 65%, rgba(9, 9, 11, 0.92) 85%, rgba(9, 9, 11, 0.7) 100%)'
+                      : 'linear-gradient(to top, rgba(250, 250, 250, 0.98) 65%, rgba(250, 250, 250, 0.92) 85%, rgba(250, 250, 250, 0.7) 100%)',
                   }}
                 >
                   {/* Title + Badge */}
-                  <div className="flex flex-wrap items-center gap-2 mb-2">
-                    <span className="text-lg">{cert.icon}</span>
-                    <h3 className="text-base md:text-lg font-bold font-[Space_Grotesk,sans-serif]" style={{ color: 'var(--text-primary)' }}>
+                  <div className="flex flex-wrap items-center gap-2 mb-1.5">
+                    <span className="text-base md:text-lg">{cert.icon}</span>
+                    <h3 className="text-sm md:text-base font-bold font-[Space_Grotesk,sans-serif]" style={{ color: 'var(--text-primary)' }}>
                       {cert.title}
                     </h3>
                     <span
@@ -505,12 +505,12 @@ function CertificationsStack() {
                   </div>
 
                   {/* Issuer + Year */}
-                  <p className="text-xs font-mono mb-2" style={{ color: cert.accentColor }}>
+                  <p className="text-[11px] font-mono mb-2" style={{ color: cert.accentColor }}>
                     {cert.issuer} • {cert.year}
                   </p>
 
                   {/* Description */}
-                  <p className="text-[13px] md:text-sm leading-relaxed mb-3 font-[Space_Grotesk,sans-serif]" style={{ color: 'var(--text-secondary)' }}>
+                  <p className="text-xs md:text-[13px] leading-relaxed mb-3 font-[Space_Grotesk,sans-serif]" style={{ color: 'var(--text-secondary)' }}>
                     {cert.description}
                   </p>
 
