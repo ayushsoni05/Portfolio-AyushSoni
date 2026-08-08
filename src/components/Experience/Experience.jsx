@@ -81,7 +81,8 @@ const CERTIFICATIONS = [
     borderColor: 'rgba(56, 189, 248, 0.4)',
     description: 'Mastered Large Language Models (LLMs), Prompt Engineering, RAG (Retrieval-Augmented Generation) architectures, fine-tuning generative models, and deploying autonomous AI agents with LangChain & Python.',
     skills: ['Generative AI', 'LLMs', 'RAG Architecture', 'Prompt Engineering', 'LangChain', 'Python AI'],
-    icon: '🤖'
+    icon: '🤖',
+    image: '/assets/cert-ibm-genai.jpg'
   },
   {
     id: 'cert-2',
@@ -94,7 +95,8 @@ const CERTIFICATIONS = [
     borderColor: 'rgba(96, 165, 250, 0.4)',
     description: 'Advanced React 19 component architecture, state management with Redux & Zustand, responsive UI/UX design patterns, web application performance tuning, accessibility (WCAG), and Jest E2E testing.',
     skills: ['React 19', 'JavaScript (ES6+)', 'Redux & Zustand', 'UI/UX Architecture', 'CSS3 & Tailwind', 'Jest Testing'],
-    icon: '⚛️'
+    icon: '⚛️',
+    image: '/assets/cert-meta-frontend.jpg'
   },
   {
     id: 'cert-3',
@@ -107,7 +109,8 @@ const CERTIFICATIONS = [
     borderColor: 'rgba(245, 158, 11, 0.4)',
     description: 'In-depth specialization in Python programming, numerical data processing with NumPy, data manipulation with Pandas, computer vision modeling with OpenCV, and RESTful API integrations.',
     skills: ['Python 3', 'NumPy', 'Pandas', 'OpenCV', 'REST APIs', 'Data Analysis'],
-    icon: '🐍'
+    icon: '🐍',
+    image: '/assets/cert-ibm-python.jpg'
   },
   {
     id: 'cert-4',
@@ -120,7 +123,8 @@ const CERTIFICATIONS = [
     borderColor: 'rgba(192, 132, 252, 0.4)',
     description: 'Comprehensive mastery of JavaScript core engine mechanics, asynchronous control flow (Promises, async/await), DOM APIs, closure encapsulation, prototype inheritance, and security best practices.',
     skills: ['JavaScript ES6+', 'Async / Await', 'DOM API', 'OOP Concepts', 'Web Security', 'Algorithms'],
-    icon: '⚡'
+    icon: '⚡',
+    image: '/assets/cert-cisco-js.jpg'
   },
   {
     id: 'cert-5',
@@ -133,7 +137,8 @@ const CERTIFICATIONS = [
     borderColor: 'rgba(45, 212, 191, 0.4)',
     description: 'Relational database architecture, advanced SQL query design, database normalization (1NF-3NF), indexing strategies, transaction ACID compliance, and MySQL performance optimization.',
     skills: ['Relational DBMS', 'SQL Query Tuning', 'Database Normalization', 'ACID Properties', 'MySQL', 'Indexing'],
-    icon: '🛢️'
+    icon: '🛢️',
+    image: '/assets/cert-infosys-dbms.jpg'
   }
 ];
 
@@ -376,14 +381,14 @@ function TimelineList({ data }) {
   );
 }
 
-{/* --- Certifications: Process-style two-column sticky + scroll layout --- */}
+{/* --- Certifications: image cards with hover-to-reveal description --- */}
 function CertificationsStack() {
   const { theme } = useTheme();
 
   return (
     <div className="w-full pt-10 md:pt-16 pb-20">
       <div className="grid md:grid-cols-2 md:gap-10 xl:gap-16">
-        {/* LEFT — Sticky info panel, stays pinned while cards scroll */}
+        {/* LEFT — Sticky info panel */}
         <div className="left-0 top-0 md:sticky md:h-svh md:py-12 mb-8 md:mb-0">
           <p
             className="text-xs font-mono uppercase tracking-widest"
@@ -404,7 +409,7 @@ function CertificationsStack() {
           >
             Industry credentials from IBM, Meta, Cisco, and Infosys — validating
             technical mastery across AI Engineering, Frontend Development, Data
-            Science, and Database Engineering.
+            Science, and Database Engineering. Hover over a card to see details.
           </p>
         </div>
 
@@ -416,69 +421,97 @@ function CertificationsStack() {
               index={index + 2}
               incrementY={30}
               incrementZ={8}
-              className="cursor-target rounded-2xl border p-6 md:p-8 shadow-lg backdrop-blur-md transition-all duration-300"
+              className="group cursor-target rounded-2xl border overflow-hidden shadow-lg transition-all duration-300"
               style={{
-                background: theme === 'dark' ? cert.bgGradient : 'var(--bg-secondary)',
                 borderColor: cert.borderColor,
                 boxShadow: '0 16px 40px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08)',
               }}
             >
-              {/* Card header: title + number */}
-              <div className="flex items-center justify-between gap-4">
-                <h2
-                  className="my-4 text-xl md:text-2xl font-bold tracking-tighter font-[Space_Grotesk,sans-serif]"
-                  style={{ color: 'var(--text-primary)' }}
-                >
-                  {cert.title}
-                </h2>
-                <h3
-                  className="text-2xl font-bold font-mono"
-                  style={{ color: cert.accentColor }}
-                >
-                  {String(index + 1).padStart(2, '0')}
-                </h3>
-              </div>
-
-              {/* Badge + Issuer row */}
-              <div className="flex flex-wrap items-center gap-2 mb-3">
-                <span className="text-2xl">{cert.icon}</span>
-                <span
-                  className="text-[11px] font-mono font-bold uppercase tracking-widest px-3 py-1 rounded-full border"
-                  style={{
-                    color: cert.accentColor,
-                    borderColor: cert.borderColor,
-                    backgroundColor: `${cert.accentColor}15`,
-                  }}
-                >
-                  {cert.badge}
-                </span>
-                <span className="text-xs" style={{ color: 'var(--text-muted)' }}>
-                  {cert.issuer} • {cert.year}
-                </span>
-              </div>
-
-              {/* Description */}
-              <p
-                className="text-sm md:text-[15px] leading-relaxed mb-4 font-[Space_Grotesk,sans-serif]"
-                style={{ color: 'var(--text-secondary)' }}
+              {/* Top bar: title + number — always visible */}
+              <div
+                className="flex items-center justify-between gap-3 px-5 py-3 md:px-6 md:py-4"
+                style={{
+                  background: theme === 'dark' ? cert.bgGradient : 'var(--bg-secondary)',
+                }}
               >
-                {cert.description}
-              </p>
-
-              {/* Skill tags */}
-              <div className="flex flex-wrap gap-2 pt-3 border-t" style={{ borderColor: 'var(--border)' }}>
-                {cert.skills.map((skill) => (
+                <div className="flex items-center gap-2 min-w-0">
+                  <span className="text-xl shrink-0">{cert.icon}</span>
+                  <h2
+                    className="text-base md:text-lg font-bold tracking-tight font-[Space_Grotesk,sans-serif] truncate"
+                    style={{ color: 'var(--text-primary)' }}
+                  >
+                    {cert.title}
+                  </h2>
+                </div>
+                <div className="flex items-center gap-2 shrink-0">
                   <span
-                    key={skill}
-                    className="px-2.5 py-1 text-[11px] md:text-[12px] font-[Space_Grotesk,sans-serif] font-medium rounded-md border"
+                    className="hidden sm:inline-block text-[10px] font-mono font-bold uppercase tracking-widest px-2.5 py-0.5 rounded-full border"
                     style={{
-                      color: 'var(--text-secondary)',
-                      borderColor: 'var(--border)',
+                      color: cert.accentColor,
+                      borderColor: cert.borderColor,
+                      backgroundColor: `${cert.accentColor}15`,
                     }}
                   >
-                    {skill}
+                    {cert.badge}
                   </span>
-                ))}
+                  <span
+                    className="text-xl font-bold font-mono"
+                    style={{ color: cert.accentColor }}
+                  >
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                </div>
+              </div>
+
+              {/* Certificate image + hover overlay container */}
+              <div className="relative w-full aspect-[3/2] overflow-hidden">
+                {/* Certificate image — always visible */}
+                <img
+                  src={cert.image}
+                  alt={`${cert.title} certificate`}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+
+                {/* Hover overlay — slides up from bottom */}
+                <div
+                  className="absolute inset-0 flex flex-col justify-end p-5 md:p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                  style={{
+                    background: theme === 'dark'
+                      ? 'linear-gradient(to top, rgba(9, 9, 11, 0.97) 60%, rgba(9, 9, 11, 0.85) 80%, transparent 100%)'
+                      : 'linear-gradient(to top, rgba(250, 250, 250, 0.97) 60%, rgba(250, 250, 250, 0.85) 80%, transparent 100%)',
+                  }}
+                >
+                  {/* Issuer + Year */}
+                  <p className="text-xs font-mono mb-2" style={{ color: cert.accentColor }}>
+                    {cert.issuer} • {cert.year}
+                  </p>
+
+                  {/* Description */}
+                  <p
+                    className="text-sm md:text-[14px] leading-relaxed mb-4 font-[Space_Grotesk,sans-serif]"
+                    style={{ color: 'var(--text-secondary)' }}
+                  >
+                    {cert.description}
+                  </p>
+
+                  {/* Skill tags */}
+                  <div className="flex flex-wrap gap-1.5">
+                    {cert.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="px-2 py-0.5 text-[10px] md:text-[11px] font-[Space_Grotesk,sans-serif] font-medium rounded border"
+                        style={{
+                          color: 'var(--text-secondary)',
+                          borderColor: 'var(--border)',
+                          backgroundColor: theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.04)',
+                        }}
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
             </CardSticky>
           ))}
