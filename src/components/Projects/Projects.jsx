@@ -16,9 +16,9 @@ const PROJECTS_DATA = [
   },
   {
     id: 2,
-    category: 'Full-Stack E-Commerce Platform',
+    category: 'Full-Stack Luxury Jewelry E-Commerce Platform',
     title: 'GLIMMR',
-    description: 'Engineered a dual-backend e-commerce platform with Python/Flask analytics service and Node.js/Express.js REST API server (15+ endpoints) secured with JWT auth, input validation, and OOP/MVC architecture handling 500+ product SKUs. Designed normalized MySQL schemas via SQLAlchemy ORM for orders/users and MongoDB/Mongoose for product catalog. Automated Pandas-based sales analytics pipelines generating weekly revenue reports; containerized and deployed on Linux via GitHub Actions CI/CD.',
+    description: 'Engineered a dual-backend luxury jewelry e-commerce platform featuring high-end diamond rings, 18k gold necklaces, and luxury watches with Python/Flask analytics service and Node.js/Express.js REST API server (15+ endpoints) secured with JWT auth, input validation, and OOP/MVC architecture handling 500+ fine jewelry SKUs. Designed normalized MySQL schemas via SQLAlchemy ORM for orders/users and MongoDB/Mongoose for product catalog. Automated Pandas-based sales analytics pipelines generating weekly revenue reports; containerized and deployed on Linux via GitHub Actions CI/CD.',
     techStack: ['Python', 'Flask', 'Node.js', 'Express.js', 'MongoDB', 'MySQL', 'SQLAlchemy', 'Pandas', 'JWT', 'Docker', 'GitHub Actions', 'Linux'],
     image: '/assets/project2.png',
     liveUrl: 'https://glimmr-store.vercel.app/',
